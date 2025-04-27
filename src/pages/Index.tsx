@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Video, Smartphone, PenTool, ArrowDown, Play } from "lucide-react";
@@ -11,6 +10,7 @@ import VideoCard from "@/components/VideoCard";
 import Testimonial from "@/components/Testimonial";
 import ContactModal from "@/components/ContactModal";
 import StickyFooter from "@/components/StickyFooter";
+import OrderForm from '@/components/OrderForm';
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -153,82 +153,16 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-dark/90 backdrop-blur-sm">
+      {/* Order Form Section */}
+      <section id="order" className="py-24 bg-gradient-to-b from-dark/90 to-dark">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Choose Your Package</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Order Your Video</h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Every package comes with scriptwriting, trend research, and viral formatting
+              Choose your package and customize your order below
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <PricingCard 
-                title="Starter"
-                price="$149"
-                description="Perfect for businesses just starting with video content"
-                features={[
-                  "1 Hook Video (0:15–0:30 sec)",
-                  "Scriptwriting included",
-                  "1 Revision",
-                  "Optimized for TikTok & Reels",
-                  "Delivered in 5-7 days"
-                ]}
-                onSelect={() => openModal("starter")}
-              />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <PricingCard 
-                title="Growth"
-                price="$349"
-                description="Ideal for consistent content creators"
-                features={[
-                  "3 Hook Videos (0:15-0:45 sec each)",
-                  "Professional Scriptwriting",
-                  "2 Revisions per video",
-                  "Trend Research & Implementation",
-                  "Delivered in 7-10 days"
-                ]}
-                isPopular={true}
-                onSelect={() => openModal("growth")}
-              />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <PricingCard 
-                title="Viral Pro"
-                price="$699"
-                description="Complete solution for serious brands"
-                features={[
-                  "1 Explainer Video (1-2 min)",
-                  "5 Viral Hook Videos",
-                  "Custom Call-to-Action Strategy",
-                  "Premium Editing & Effects",
-                  "Unlimited Revisions",
-                  "Delivered in 14-21 days"
-                ]}
-                onSelect={() => openModal("viralpro")}
-              />
-            </motion.div>
-          </div>
+          <OrderForm />
         </div>
       </section>
       
