@@ -10,11 +10,12 @@ import VideoCard from "@/components/VideoCard";
 import Testimonial from "@/components/Testimonial";
 import ContactModal from "@/components/ContactModal";
 import StickyFooter from "@/components/StickyFooter";
-import OrderForm from '@/components/OrderForm';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | undefined>();
+  const navigate = useNavigate();
   
   const openModal = (packageName: string) => {
     setSelectedPackage(packageName);
@@ -28,6 +29,10 @@ const Index = () => {
         behavior: 'smooth'
       });
     }
+  };
+  
+  const navigateToOrder = () => {
+    navigate('/order');
   };
   
   return (
@@ -78,13 +83,13 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <Button 
-                onClick={() => scrollToSection('pricing')}
+                onClick={navigateToOrder}
                 className="bg-neon-pink hover:bg-neon-pink/80 text-white px-8 py-6 text-lg"
               >
                 See Packages
               </Button>
               <Button 
-                onClick={() => scrollToSection('portfolio')}
+                onClick={navigateToOrder}
                 className="bg-transparent border border-white hover:bg-white/10 text-white px-8 py-6 text-lg"
               >
                 View Portfolio
@@ -153,18 +158,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Order Form Section */}
-      <section id="order" className="py-24 bg-gradient-to-b from-dark/90 to-dark">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Order Your Video</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Choose your package and customize your order below
-            </p>
-          </div>
-          <OrderForm />
-        </div>
-      </section>
+      {/* Remove the entire Order Form Section */}
       
       {/* Portfolio Section */}
       <section id="portfolio" className="py-24 bg-dark">

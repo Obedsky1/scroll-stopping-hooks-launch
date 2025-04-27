@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
+import { useNavigate } from 'react-router-dom';
 
 const NavBar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -20,13 +22,8 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
+  const navigateToOrder = () => {
+    navigate('/order');
   };
 
   return (
@@ -45,19 +42,19 @@ const NavBar: React.FC = () => {
         
         <div className="hidden md:flex items-center space-x-8">
           <button 
-            onClick={() => scrollToSection('services')}
+            onClick={() => navigate('/#services')}
             className="text-white hover:text-neon-pink transition duration-300"
           >
             Services
           </button>
           <button 
-            onClick={() => scrollToSection('pricing')}
+            onClick={navigateToOrder}
             className="text-white hover:text-neon-pink transition duration-300"
           >
             Pricing
           </button>
           <button 
-            onClick={() => scrollToSection('portfolio')}
+            onClick={() => navigate('/#portfolio')}
             className="text-white hover:text-neon-pink transition duration-300"
           >
             Portfolio
@@ -65,7 +62,7 @@ const NavBar: React.FC = () => {
         </div>
         
         <Button 
-          onClick={() => scrollToSection('pricing')}
+          onClick={navigateToOrder}
           className="bg-neon-pink hover:bg-neon-pink/80 text-white transition-all duration-300"
         >
           Get Started
